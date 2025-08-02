@@ -12,7 +12,7 @@ Downloads the dataset from a specified source (Google Drive).
 
 Extracts the raw image files.
 
-** Data Transformation:**
+**Data Transformation:**
 
 Loads the raw images and their labels (AD, CN).
 
@@ -22,13 +22,13 @@ Resizes all images to a consistent size (224x224).
 
 Splits the data into training and testing sets.
 
-** Base Model Preparation: ** 
+**Base Model Preparation:** 
 
 Builds the custom Keras model architecture, which includes the novel ContinuousLayer.
 
 Saves the uncompiled model structure as an artifact.
 
-** Model Training:**
+**Model Training:**
 
 Loads the prepared base model.
 
@@ -38,7 +38,7 @@ Sets up data generators with optional augmentation for training.
 
 Trains the model and saves the final, trained model weights.
 
-** Model Evaluation:**
+**Model Evaluation:**
 
 Loads the trained model.
 
@@ -48,7 +48,7 @@ Calculates and saves key metrics like loss and accuracy.
 
 Generates a classification report and a confusion matrix for detailed performance analysis.
 
-** Prediction & Deployment:**
+**Prediction & Deployment:**
 
 A Flask web application provides a simple user interface.
 
@@ -62,30 +62,30 @@ The final output is a clean web interface where a user can upload an MRI image a
 ## Installation and Setup Guide
 Follow these steps to set up and run the project locally.
 
-** Prerequisites**
+**Prerequisites**
 Git
 
 Python 3.8+
 
 A virtual environment tool (like venv or conda)
 
-** 1. Clone the Repository**
+**1. Clone the Repository**
 git clone https://github.com/your-username/Your-Repo-Name.git
 cd Your-Repo-Name
 
-** 2. Create a Virtual Environment**
+**2. Create a Virtual Environment**
 It's highly recommended to use a virtual environment to manage project dependencies.
 
-# Using venv (recommended)
+ Using venv (recommended)
 python -m venv tf_env
 .\tf_env\Scripts\activate
 
-** 3. Install Dependencies** 
+**3. Install Dependencies** 
 Install all the required Python packages from the requirements.txt file.
 
 pip install -r requirements.txt
 
-** 4. Install the Local Package**
+**4. Install the Local Package**
 To make the alzheimer_classifier source code available for import, install it in editable mode.
 
 pip install -e .
@@ -93,7 +93,7 @@ pip install -e .
 How to Run the Project
 There are two main ways to run this project: running the training pipeline or running the web application for prediction.
 
-** 1. Running the Training Pipeline**
+**1. Running the Training Pipeline**
 This project uses DVC to manage the end-to-end training pipeline.
 
 Initialize DVC (only once):
@@ -105,7 +105,7 @@ This command will execute all stages defined in dvc.yaml (data ingestion, transf
 
 dvc repro
 
-** 2. Running the Web Application**
+**2. Running the Web Application**
 To use the trained model for predictions, run the Flask web application.
 
 python app.py
