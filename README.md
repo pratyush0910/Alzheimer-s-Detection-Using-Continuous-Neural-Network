@@ -100,11 +100,11 @@ There are two main ways to run this project: running the training pipeline or ru
 **1. Running the Training Pipeline**
 This project uses DVC to manage the end-to-end training pipeline.
 
-Initialize DVC (only once):
+**Initialize DVC (only once):**
 ```
 dvc init
 ```
-Run the full pipeline:
+**Run the full pipeline:**
 This command will execute all stages defined in dvc.yaml (data ingestion, transformation, training, and evaluation), skipping any stages that are already up-to-date.
 ```
 dvc repro
@@ -122,12 +122,10 @@ You will see the web interface where you can upload an MRI image to get a classi
 ## Future Enhancements
 This project provides a solid foundation that can be extended in several ways:
 
-Improve Model Performance: Experiment with different hyperparameters, try more advanced data augmentation techniques, or explore different model architectures (e.g., using transfer learning with pre-trained models like VGG16 or ResNet).
+**Multi-Class Classification:** Extend the model to classify intermediate stages of cognitive decline, such as Mild Cognitive Impairment (MCI).
 
-Multi-Class Classification: Extend the model to classify intermediate stages of cognitive decline, such as Mild Cognitive Impairment (MCI).
+**Experiment Tracking:** Integrate tools like MLflow or Weights & Biases to log experiments, track metrics, and manage model versions systematically.
 
-Experiment Tracking: Integrate tools like MLflow or Weights & Biases to log experiments, track metrics, and manage model versions systematically.
+**Cloud Deployment:** Deploy the Flask application to a cloud service like AWS, Google Cloud, or Heroku to make it publicly accessible.
 
-Cloud Deployment: Deploy the Flask application to a cloud service like AWS, Google Cloud, or Heroku to make it publicly accessible.
-
-Data Versioning with DVC: Set up a DVC remote (e.g., Google Drive, S3) to version control the dataset and model artifacts, allowing for full reproducibility and collaboration.
+**Data Versioning with DVC:** Set up a DVC remote (e.g., Google Drive, S3) to version control the dataset and model artifacts, allowing for full reproducibility and collaboration.
