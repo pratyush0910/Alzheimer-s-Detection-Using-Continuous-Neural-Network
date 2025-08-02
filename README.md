@@ -71,25 +71,29 @@ A virtual environment tool (like venv or conda)
 
 **1. Clone the Repository**
 git clone https://github.com/your-username/Your-Repo-Name.git
+```
 cd Your-Repo-Name
+```
 
 **2. Create a Virtual Environment**
 It's highly recommended to use a virtual environment to manage project dependencies.
 
  Using venv (recommended)
+```
 python -m venv tf_env
 .\tf_env\Scripts\activate
+```
 
 **3. Install Dependencies** 
 Install all the required Python packages from the requirements.txt file.
-
+```
 pip install -r requirements.txt
-
+```
 **4. Install the Local Package**
 To make the alzheimer_classifier source code available for import, install it in editable mode.
-
+```
 pip install -e .
-
+```
 How to Run the Project
 There are two main ways to run this project: running the training pipeline or running the web application for prediction.
 
@@ -97,19 +101,19 @@ There are two main ways to run this project: running the training pipeline or ru
 This project uses DVC to manage the end-to-end training pipeline.
 
 Initialize DVC (only once):
-
+```
 dvc init
-
+```
 Run the full pipeline:
 This command will execute all stages defined in dvc.yaml (data ingestion, transformation, training, and evaluation), skipping any stages that are already up-to-date.
-
+```
 dvc repro
-
+```
 **2. Running the Web Application**
 To use the trained model for predictions, run the Flask web application.
-
+```
 python app.py
-
+```
 After running the command, open your web browser and navigate to:
 http://127.0.0.1:8080
 
