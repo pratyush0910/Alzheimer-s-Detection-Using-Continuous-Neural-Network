@@ -1,0 +1,50 @@
+stages:
+  data_ingestion:
+    cmd: python src/alzheimer_classifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/alzheimer_classifier/pipeline/stage_01_data_ingestion.py
+      - src/alzheimer_classifier/components/data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/Alzheimer_Dataset  # ✅ Properly formatted as a list item
+
+  data_transformation:
+    cmd: python src/alzheimer_classifier/pipeline/stage_02_data_transformation.py
+    deps:
+      - src/alzheimer_classifier/pipeline/stage_02_data_transformation.py
+      - src/alzheimer_classifier/components/data_transformation.py
+      # THE FIX: This dependency must match the output of the stage above.
+      - artifacts/data_ingestion/Alzheimer_Dataset
+      - config/config.yaml
+    outs:
+      - artifacts/data_transformation/train
+      - artifacts/data_transformation/test
+
+  prepare_base_model:
+    cmd: python src/alzheimer_classifier/pipeline/stage_03_prepare_base_model.py
+    deps:
+      - src/alzheimer_classifier/pipeline/stage_03_prepare_base_model.py
+      - src/alzheimer_classifier/components/prepare_base_model.py
+      - config/config.yaml
+      - params.yaml
+    params:
+      - IMAGE_SIZE
+    outs:
+      - artifacts/prepare_base_model/updated_base_model.h5
+
+  model_training:
+    cmd: python src/alzheimer_classifier/pipeline/stage_04_model_training.py
+    deps:
+      - src/alzheimer_classifier/pipeline/stage_04_model_training.py
+      - src/alzheimer_classifier/components/model_training.py
+      - artifacts/prepare_base_model/updated_base_model.h5
+      - artifacts/data_transformation/train
+      - config/config.yaml
+      - params.yaml
+    params:
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
+      - LEARNING_RATE
+    outs:
+      - artifacts/model_training/model.h5

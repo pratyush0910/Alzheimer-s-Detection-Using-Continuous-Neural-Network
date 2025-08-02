@@ -1,0 +1,17 @@
+pandas
+scikit-learn
+seaborn
+matplotlib
+opencv-python-headless
+tensorflow
+dvc
+pyyaml
+python-box
+ensure
+gdown
+keras
+Flask
+Wekzeug
+numpy
+tqdm
+joblib

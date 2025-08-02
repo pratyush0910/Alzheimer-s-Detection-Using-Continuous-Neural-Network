@@ -1,0 +1,39 @@
+# config/config.yaml
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://drive.google.com/uc?id=1dD_HDDtrAu9opyaiGopbaBinp_Fgb8zz&export=download
+
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  # THE FIX: Change "Alzheimer_Dataset" to the real folder name.
+  # For example, if the real folder is named "Dataset":
+  data_path: artifacts/data_ingestion/Dataset 
+  # These are the OUTPUT paths where the new, processed images will be saved.
+  train_dir: artifacts/data_transformation/train
+  test_dir: artifacts/data_transformation/test  
+
+prepare_base_model:
+  root_dir: artifacts/prepare_base_model
+  base_model_path: artifacts/prepare_base_model/base_model.h5
+  updated_base_model_path: artifacts/prepare_base_model/updated_base_model.h5
+
+model_training:
+  root_dir: artifacts/model_training
+  trained_model_path: artifacts/model_training/model.h5
+  # The 'training_data' key was missing here, which is implicitly used by the config manager.
+  # Let's make it explicit and correct. It should point to the output of the data_transformation stage.
+  # This was the source of the error.
+  training_data: artifacts/data_transformation/train 
+  testing_data: artifacts/data_transformation/test
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  # This path points to the model we want to evaluate
+  trained_model_path: artifacts/model_training/model.h5
+  # This path is where we will save the evaluation results
+  metrics_path: artifacts/model_evaluation/scores.json  
