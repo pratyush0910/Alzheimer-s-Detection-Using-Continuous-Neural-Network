@@ -3,9 +3,17 @@ import os
 from werkzeug.utils import secure_filename
 from alzheimer_classifier.components.prediction import Prediction
 from alzheimer_classifier import logger
+import sys
+import os
 
-# Initialize the Flask app
+# Add 'src/' to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+
+from flask import Flask, render_template, request
+
+# Initialize the Flask app  
 app = Flask(__name__)
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
 # Define the path for uploaded images
 UPLOAD_FOLDER = 'static/uploads/'
