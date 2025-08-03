@@ -14,3 +14,4 @@ Flask
 numpy
 tqdm
 joblib
+gunicorn==21.2.0
